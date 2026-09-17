@@ -1,0 +1,31 @@
+function model = init_model(modelPath)
+%INIT_MODEL Load the exact reduced-order instrument coefficients.
+S = load(modelPath);
+model = S;
+model.P = double(S.P(1));
+model.M = double(S.M(1));
+model.N = double(S.N(1));
+model.lam0 = double(S.lam0(1));
+model.L = double(S.L(1));
+model.core_d = double(S.core_d(1));
+model.NA = double(S.NA(1));
+model.b_scale_curv = double(S.b_scale_curv(1));
+model.hT = double(S.hT(1));
+model.hB = double(S.hB(1));
+model.Gcond = double(S.Gcond(1));
+model.lam = double(S.lam(:).');
+model.pilot_lams = double(S.pilot_lams(:).');
+model.pilot_idx = double(S.pilot_idx_matlab(:).');
+model.b0 = S.b0(:);
+model.phi0 = S.phi0(:);
+model.s_lam = S.s_lam(:);
+model.q_lam = S.q_lam(:);
+model.alphaT = S.alphaT(:);
+model.alphaB = S.alphaB(:);
+model.alphaTB = S.alphaTB(:);
+model.y0pil = S.y0pil(:);
+model.alphaReg = 2e-6;
+model.betaReg = 2e-7;
+model.sampleSNR = 35;
+model.pilotSNR = 40;
+end
